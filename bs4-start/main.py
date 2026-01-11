@@ -1,9 +1,7 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime, time, timedelta
-
 
 # Get the page
 options = Options()
@@ -21,18 +19,23 @@ driver.get("https://ozh.github.io/cookieclicker/")
 elem = driver.find_element(By.ID, "bigCookie")
 
 # Game logic - play for 5 min / 30 seconds
-running = datetime.now() + timedelta(0,60)
+running = datetime.now() + timedelta(0,0, minutes=1)
+cookies = driver.find_element(By.CLASS_NAME, "cc_btn.cc_btn_accept_all")
+cookies.click()
+
 
 while running.strftime("%H:%M:%S") != datetime.now().strftime("%H:%M:%S"):
+
     # Game logic - every 5 seconds
     y = datetime.now() + timedelta(0,5)
+
     while y.strftime("%H:%M:%S") != datetime.now().strftime("%H:%M:%S"):
         elem.click()
 
     # Game logic - buy a product
     buy_products = driver.find_elements(By.CLASS_NAME, "product.unlocked.enabled")
     product = buy_products[-1]
-    print(product)
+    print(len(buy_products))
     product.click()
 
 cookies_per_seconds = driver.find_element(By.ID, "cookies")
