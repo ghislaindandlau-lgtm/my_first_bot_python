@@ -1,7 +1,3 @@
-Here’s a short and simple **README.md** you can use:
-
----
-
 # Cookie Clicker Bot 🍪
 
 This project is a simple **Selenium automation script** that plays the Cookie Clicker game automatically.
@@ -45,4 +41,5 @@ python main.py
 ⚠️ This script is for **educational purposes only**.
 
 ---
+
 
